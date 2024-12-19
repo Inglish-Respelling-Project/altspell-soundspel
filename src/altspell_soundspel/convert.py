@@ -40,8 +40,13 @@ class Dictionary:
                     self.dict[soundspel] = tradspell
 
 class Converter:
-    # Load spaCy without any unnecessary components
-    _nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner', 'tagger'])
+    try:
+        # Load spaCy without any unnecessary components
+        _nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
+    except OSError:
+        from spacy.cli import download
+        download('en_core_web_sm')
+        Converter._nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
 
     def __init__(self, fwd: bool):
         self._dict = Dictionary(fwd)
