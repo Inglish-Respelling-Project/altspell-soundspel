@@ -28,16 +28,16 @@ class Dictionary:
         self._populate_dict(fwd)
 
     def _populate_dict(self, fwd: bool):
-        file = files(data).joinpath('soundspel-dict.csv').open('r')
+        with files(data).joinpath('soundspel-dict.csv').open('r') as file:
 
-        for row in csv.reader(file):
-            tradspell = row[0]
-            soundspel = row[1]
+            for row in csv.reader(file):
+                tradspell = row[0]
+                soundspel = row[1]
 
-            if fwd:
-                self.dict[tradspell] = soundspel
-            else:
-                self.dict[soundspel] = tradspell
+                if fwd:
+                    self.dict[tradspell] = soundspel
+                else:
+                    self.dict[soundspel] = tradspell
 
 class Converter:
     # Load spaCy without any unnecessary components
