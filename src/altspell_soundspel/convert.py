@@ -46,7 +46,7 @@ class Converter:
     except OSError:
         from spacy.cli import download
         download('en_core_web_sm')
-        Converter._nlp = spacy.load('en_core_web_sm', enable=['tokenizer'])
+        _nlp = spacy.load('en_core_web_sm', enable=['tokenizer'])
 
     def __init__(self, fwd: bool):
         self._dict = Dictionary(fwd)
