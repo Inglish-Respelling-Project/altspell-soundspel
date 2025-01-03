@@ -18,7 +18,7 @@
 
 import csv
 from importlib.resources import files
-from altspell.plugin.PluginBase import nlp
+from altspell.plugin import PluginBase
 from . import data
 
 
@@ -51,7 +51,7 @@ class RevDictionary:
                 self.dict[soundspel] = tradspell
 
 class Converter:
-    _nlp = nlp
+    _nlp = PluginBase.nlp
 
 def _process_lowercase_key(token, key, dictionary, out_tokens):
     if token.text[0].isupper():
