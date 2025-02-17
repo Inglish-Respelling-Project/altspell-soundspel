@@ -17,7 +17,8 @@ classifiers = [
 ]
 dependencies = [
     "altspell",
-    "spacy"
+    "spacy",
+    "nlp_provider"
 ]
 
 [build-system]
