@@ -50,7 +50,7 @@ class RevDictionary:
 
                 self.dict[soundspel] = tradspell
 
-class Converter:
+class Translator:
     _nlp = shared_nlp
 
 def _process_lowercase_key(token, key, dictionary, out_tokens):
@@ -61,13 +61,13 @@ def _process_lowercase_key(token, key, dictionary, out_tokens):
     else:
         out_tokens.append(dictionary.dict[key])
 
-class FwdConverter(Converter):
+class FwdTranslator(Translator):
     _dict = FwdDictionary()
 
-    def convert_para(self, text: str) -> str:
+    def translate_para(self, text: str) -> str:
         out_tokens = []
 
-        doc = Converter._nlp(text)
+        doc = Translator._nlp(text)
         for token in doc:
             token_lower = token.text.lower()
 
@@ -82,13 +82,13 @@ class FwdConverter(Converter):
 
         return ''.join(out_tokens)
 
-class RevConverter(Converter):
+class RevTranslator(Translator):
     _dict = RevDictionary()
 
-    def convert_para(self, text: str) -> str:
+    def translate_para(self, text: str) -> str:
         out_tokens = []
 
-        doc = Converter._nlp(text)
+        doc = Translator._nlp(text)
         for token in doc:
             token_lower = token.text.lower()
 

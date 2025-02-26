@@ -1,6 +1,6 @@
 '''
     Altspell  Soundspel plugin for altspell.
-    Copyright (C) 2024  Nicholas Johnson
+    Copyright (C) 2024-2025  Nicholas Johnson
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,17 +16,17 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 '''
 
-from altspell.plugin import PluginBase
-from .convert import FwdConverter, RevConverter
+from altspell_plugins import PluginBase
+from .translate import FwdTranslator, RevTranslator
 
 
 class Plugin(PluginBase):
     def __init__(self):
-        self._fwd_converter = FwdConverter()
-        self._rev_converter = RevConverter()
+        self._fwd_translator = FwdTranslator()
+        self._rev_translator = RevTranslator()
 
-    def convert_to_altspell(self, tradspell_text: str) -> str:
-        return self._fwd_converter.convert_para(tradspell_text)
+    def translate_to_respelling(self, traditional_text: str) -> str:
+        return self._fwd_translator.translate_para(traditional_text)
 
-    def convert_to_tradspell(self, altspell_text: str) -> str:
-        return self._rev_converter.convert_para(altspell_text)
+    def translate_to_traditional_spelling(self, respelled_text: str) -> str:
+        return self._rev_translator.translate_para(respelled_text)
