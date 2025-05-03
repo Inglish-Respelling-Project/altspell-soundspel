@@ -28,9 +28,11 @@ class Plugin(PluginBase):
         self._fwd_translator = FwdTranslator()
         self._rev_translator = RevTranslator()
 
+    @property
     def name(self) -> str:
         return self._name
 
+    @property
     def pretty_name(self) -> str:
         return self._pretty_name
 
