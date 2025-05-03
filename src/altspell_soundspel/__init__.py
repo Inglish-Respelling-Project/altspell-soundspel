@@ -22,8 +22,17 @@ from .translate import FwdTranslator, RevTranslator
 
 class Plugin(PluginBase):
     def __init__(self):
+        self._name = "soundspel"
+        self._pretty_name = "Soundspel"
+
         self._fwd_translator = FwdTranslator()
         self._rev_translator = RevTranslator()
+
+    def name(self) -> str:
+        return self._name
+
+    def pretty_name(self) -> str:
+        return self._pretty_name
 
     def translate_to_respelling(self, traditional_text: str) -> str:
         return self._fwd_translator.translate_para(traditional_text)
