@@ -15,7 +15,7 @@ classifiers = [
   "Operating System :: OS Independent",
 ]
 dependencies = [
-    "altspell-plugins==0.2.0",
+    "altspell-plugins==0.2.2",
     "nlp_provider==0.1.0"
 ]
 
